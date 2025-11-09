@@ -1,91 +1,170 @@
-# Árbol Binario de Búsqueda (ABB) - Ejercicio Completo
+# Árbol Binario de Búsqueda (ABB) - Proyecto Completo
 
-Este proyecto implementa un **Árbol Binario de Búsqueda** en Python con todas las operaciones fundamentales.
+Un proyecto completo en Python que implementa Árboles Binarios de Búsqueda con múltiples estrategias de eliminación y opciones de visualización.
 
-## 📋 Datos del Ejercicio
+## 📁 Estructura del Proyecto
 
-- **Datos iniciales**: 51, 52, 63, 14, 18, 11, 25, 56, 40, 22, 87
-- **Elementos a agregar**: 27, 12, 99
-- **Eliminaciones a demostrar**:
-  - Nodo sin hijos (hoja)
-  - Nodo con 1 hijo
-  - Nodo con 2 hijos (predecesor y sucesor)
+```
+ABB/
+│
+├── src/                          # Código fuente principal
+│   ├── __init__.py
+│   ├── core/                     # Implementaciones core del ABB
+│   │   ├── __init__.py
+│   │   ├── arbol_abb.py         # ABB con predecesor inorden
+│   │   └── abb_sucesor.py       # ABB con sucesor inorden
+│   │
+│   └── visualization/            # Módulos de visualización
+│       ├── __init__.py
+│       ├── visualizador_basico.py    # Visualización básica
+│       ├── visualizador_grafico.py   # Visualización gráfica
+│       └── visualizador_circulos.py  # Visualización con círculos
+│
+├── examples/                     # Ejemplos de uso
+│   ├── demo_completa.py         # Demo completa del ejercicio
+│   ├── ejemplo_basico.py        # Ejemplo de uso básico
+│   ├── ejemplo_comparacion.py   # Comparación predecesor vs sucesor
+│   └── ejemplo_visualizaciones.py # Demo de visualizaciones
+│
+├── docs/                         # Documentación
+│   └── README_original.md       # README original del proyecto
+│
+└── README.md                     # Este archivo
 
-## 📁 Archivos del Proyecto
+```
 
-1. **`arbol_abb.py`** - Implementación completa con predecesor inorden
-2. **`abb_con_sucesor.py`** - Versión alternativa que usa sucesor inorden
-3. **`visualizador_grafico.py`** - Visualización gráfica básica del árbol
-4. **`arbol_formato_grafico.py`** - Visualización con múltiples formatos
-5. **`arbol_circulos.py`** - ⭐ **Visualización con círculos como en tu imagen**
+## 🚀 Inicio Rápido
 
-## 🌳 Características del ABB
+### Requisitos
+- Python 3.7 o superior
+- No requiere librerías externas
 
-### Operaciones Implementadas
+### Instalación
 
-- ✅ **Inserción** de elementos
-- ✅ **Búsqueda** de elementos
-- ✅ **Eliminación** con los 3 casos:
-  - Nodo hoja (sin hijos)
-  - Nodo con un hijo
-  - Nodo con dos hijos
-- ✅ **Recorrido inorden** (muestra elementos ordenados)
-- ✅ **Visualización** de la estructura del árbol
+1. Clona o descarga este repositorio
+2. No es necesario instalar dependencias adicionales
 
-### Visualización Gráfica 🎨
+### Uso Básico
 
-- ✅ **Formato de árbol tradicional** (texto estructurado)
-- ✅ **Formato con círculos y líneas** (similar a diagramas)
-- ✅ **Representación tipo diagrama** (con conectores Unicode)
-- ✅ **Visualización por niveles** con conexiones
+```python
+# Importar la clase principal
+from src.core.arbol_abb import ArbolBinarioBusqueda
 
-### Métodos de Eliminación para Nodos con 2 Hijos
+# Crear un árbol
+abb = ArbolBinarioBusqueda()
 
-1. **Predecesor Inorden**: Máximo del subárbol izquierdo
-2. **Sucesor Inorden**: Mínimo del subárbol derecho
+# Agregar elementos
+datos = [50, 30, 70, 20, 40, 60, 80]
+for valor in datos:
+    abb.agregar(valor)
 
-## 🚀 Cómo Ejecutar
+# Mostrar el árbol
+abb.mostrar_arbol()
+
+# Buscar un elemento
+existe = abb.buscar(40)  # True
+
+# Eliminar un elemento
+abb.eliminar(30)
+
+# Recorrido inorden (ordenado)
+elementos = abb.recorrido_inorden()
+print(elementos)
+```
+
+## 📚 Ejemplos Disponibles
+
+### 1. Ejemplo Básico
+Demuestra las operaciones fundamentales del ABB.
 
 ```bash
-# Ejecutar implementación principal
-python arbol_abb.py
-
-# Ejecutar demostración con sucesor
-python abb_con_sucesor.py
-
-# 🎨 Visualizaciones gráficas
-python visualizador_grafico.py       # Visualización básica
-python arbol_formato_grafico.py      # Múltiples formatos
-python arbol_circulos.py             # ⭐ Formato con círculos
+python examples/ejemplo_basico.py
 ```
 
-## 📊 Resultado del Ejercicio
+### 2. Comparación Predecesor vs Sucesor
+Muestra la diferencia entre las dos estrategias de eliminación para nodos con 2 hijos.
 
-### Árbol Inicial (después de agregar 27, 12, 99)
-```
-Raíz: 51
-    ├── I: 14
-        ├── I: 11
-            └── D: 12
-        └── D: 18
-            └── D: 25
-                ├── I: 22
-                └── D: 40
-                    ├── I: 27
-    └── D: 52
-        └── D: 63
-            ├── I: 56
-            └── D: 87
-                └── D: 99
+```bash
+python examples/ejemplo_comparacion.py
 ```
 
-### Eliminaciones Demostradas
+### 3. Visualizaciones
+Demuestra las diferentes formas de visualizar el árbol.
 
-1. **Nodo 12** (sin hijos): Se elimina directamente
-2. **Nodo 18** (con 1 hijo): Se reemplaza por su hijo derecho (25)
-3. **Nodo 14** (con 2 hijos): Se reemplaza por su predecesor (11)
+```bash
+python examples/ejemplo_visualizaciones.py
+```
 
-## 🔍 Conceptos Clave
+### 4. Demo Completa del Ejercicio
+Ejecuta la demostración completa del ejercicio académico.
+
+```bash
+python examples/demo_completa.py
+```
+
+## 🌳 Características Implementadas
+
+### Operaciones del ABB
+
+- ✅ **Inserción** - Agregar elementos manteniendo las propiedades del ABB
+- ✅ **Búsqueda** - Encontrar elementos de forma eficiente
+- ✅ **Eliminación** - Tres casos:
+  - Nodo sin hijos (hoja)
+  - Nodo con un hijo
+  - Nodo con dos hijos (predecesor y sucesor)
+- ✅ **Recorrido Inorden** - Obtener elementos ordenados
+
+### Estrategias de Eliminación
+
+1. **Predecesor Inorden** (`arbol_abb.py`)
+   - Reemplaza el nodo con el máximo del subárbol izquierdo
+   - Útil cuando el subárbol derecho es más pesado
+
+2. **Sucesor Inorden** (`abb_sucesor.py`)
+   - Reemplaza el nodo con el mínimo del subárbol derecho
+   - Útil cuando el subárbol izquierdo es más pesado
+
+### Visualizaciones
+
+1. **Básica** - Formato simple con conectores ASCII
+2. **Gráfica** - Formato con conexiones visuales mejoradas
+3. **Círculos** - Estilo similar a diagramas con nodos circulares
+
+## 📖 Documentación de las Clases
+
+### `ArbolBinarioBusqueda`
+
+**Clase principal del ABB con eliminación por predecesor**
+
+#### Métodos principales:
+- `agregar(valor)` - Agrega un elemento al árbol
+- `buscar(valor)` - Busca un elemento (retorna True/False)
+- `eliminar(valor)` - Elimina un elemento del árbol
+- `recorrido_inorden()` - Retorna lista de elementos ordenados
+- `mostrar_arbol()` - Muestra la estructura visual del árbol
+
+### `ABBConSucesor`
+
+**Versión alternativa que usa sucesor inorden**
+
+#### Métodos principales:
+- `agregar(valor)` - Agrega un elemento al árbol
+- `eliminar_con_sucesor(valor)` - Elimina usando sucesor inorden
+- `recorrido_inorden()` - Retorna lista de elementos ordenados
+- `mostrar_arbol()` - Muestra la estructura visual del árbol
+
+## 🎯 Complejidad Temporal
+
+| Operación | Caso Promedio | Peor Caso |
+|-----------|---------------|-----------|
+| Inserción | O(log n)      | O(n)      |
+| Búsqueda  | O(log n)      | O(n)      |
+| Eliminación | O(log n)    | O(n)      |
+| Recorrido | O(n)          | O(n)      |
+
+*Nota: El peor caso O(n) ocurre cuando el árbol se degenera en una lista enlazada*
+
+## 💡 Conceptos Clave
 
 ### Propiedades del ABB
 - Todos los elementos del subárbol izquierdo < nodo actual
@@ -93,28 +172,60 @@ Raíz: 51
 - El recorrido inorden produce una secuencia ordenada
 
 ### Casos de Eliminación
-1. **Nodo hoja**: `return None`
-2. **Un hijo**: `return hijo_único`
-3. **Dos hijos**: 
-   - Encontrar predecesor o sucesor
-   - Reemplazar valor
-   - Eliminar el nodo predecesor/sucesor
+1. **Nodo hoja**: Se elimina directamente
+2. **Nodo con un hijo**: Se reemplaza por su único hijo
+3. **Nodo con dos hijos**: Se reemplaza por el predecesor o sucesor inorden
 
-## 💡 Ventajas de Cada Método
+## 🔧 Personalización
 
-### Predecesor Inorden
-- Mantiene más balanceado el subárbol izquierdo
-- Útil cuando el subárbol derecho es más pesado
+Puedes extender las clases para agregar funcionalidades adicionales:
 
-### Sucesor Inorden  
-- Mantiene más balanceado el subárbol derecho
-- Útil cuando el subárbol izquierdo es más pesado
+```python
+from src.core.arbol_abb import ArbolBinarioBusqueda
 
-## 🎯 Complejidad
+class MiABBPersonalizado(ArbolBinarioBusqueda):
+    def contar_nodos(self):
+        """Cuenta el número total de nodos"""
+        return len(self.recorrido_inorden())
+    
+    def encontrar_minimo(self):
+        """Encuentra el valor mínimo del árbol"""
+        elementos = self.recorrido_inorden()
+        return elementos[0] if elementos else None
+```
 
-- **Inserción**: O(log n) promedio, O(n) peor caso
-- **Búsqueda**: O(log n) promedio, O(n) peor caso  
-- **Eliminación**: O(log n) promedio, O(n) peor caso
-- **Recorrido**: O(n)
+## 📋 Ejercicio Académico
 
-*Nota: El peor caso O(n) ocurre cuando el árbol se degenera en una lista enlazada*
+Este proyecto implementa el siguiente ejercicio:
+
+**Datos iniciales**: 51, 52, 63, 14, 18, 11, 25, 56, 40, 22, 87  
+**Elementos a agregar**: 27, 12, 99  
+**Eliminaciones a demostrar**:
+- Nodo sin hijos (12)
+- Nodo con 1 hijo (18)
+- Nodo con 2 hijos (14)
+
+Ejecuta `python examples/demo_completa.py` para ver la solución completa.
+
+## 🤝 Contribuciones
+
+Las contribuciones son bienvenidas. Algunas ideas para mejorar:
+
+- Implementar balanceo del árbol (AVL, Rojo-Negro)
+- Agregar más tipos de recorridos (preorden, postorden)
+- Implementar serialización/deserialización del árbol
+- Agregar visualización gráfica con bibliotecas como matplotlib
+- Implementar tests unitarios
+
+## 📝 Licencia
+
+Este proyecto es de uso educativo y puede ser utilizado libremente.
+
+## 👤 Autor
+
+Proyecto ABB - Implementación educativa de Árboles Binarios de Búsqueda
+
+---
+
+**Versión**: 1.0.0  
+**Última actualización**: Noviembre 2025
